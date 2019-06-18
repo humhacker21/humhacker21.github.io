@@ -51,10 +51,12 @@
 		}
 
 	// Footer.
+	
 		breakpoints.on('<=medium', function() {
-			$footer.insertAfter($main);
+			//$footer.insertAfter($main);
+			$footer.appendTo($header);
 		});
-
+		
 		breakpoints.on('>medium', function() {
 			$footer.appendTo($header);
 		});
@@ -76,16 +78,18 @@
 					$header.css('background-position', '');
 
 				});
-
+				
 				breakpoints.on('>medium', function() {
-
+					
 					$header.css('background-position', 'left 0px');
 
+					
 					$window.on('scroll.strata_parallax', function() {
-						$header.css('background-position', 'left ' + (-1 * (parseInt($window.scrollTop()) / settings.parallaxFactor)) + 'px');
-					});
+						$header.css('background-position', 'left ' + (-1 * (parseInt($window.scrollTop()) / settings.parallaxFactor)) + 'px')
+					});	
 
 				});
+				
 
 				$window.on('load', function() {
 					$window.triggerHandler('scroll');
